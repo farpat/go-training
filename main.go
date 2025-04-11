@@ -3,16 +3,27 @@ package main
 import "fmt"
 
 func main() {
-	// maxPrime := 50
-	// fmt.Printf("Prime numbers up to %d:\n", maxPrime)
-	// fmt.Println(getPrimeNumbers(maxPrime))
+	fmt.Println("Hello World!")
 
-	// fmt.Printf("Square of 4:\n")
-	// fmt.Println(displaySquare(4))
+	var daysByMonth = map[string]int{
+		"January":   31,
+		"February":  28,
+		"March":     31,
+		"April":     30,
+		"May":       31,
+		"June":      30,
+		"July":      31,
+		"August":    31,
+		"September": 30,
+		"October":   31,
+		"November":  30,
+		"December":  31,
+	}
 
-	// fmt.Printf("Count bits of 7 (111):\n")
-	// fmt.Println(countBits(7))
+	var totalDays int
+	for _, days := range daysByMonth {
+		totalDays += days
+	}
 
-	fmt.Printf("Number of divisors of 10:\n")
-	fmt.Println(getDivisorsCount(10))
+	fmt.Printf("Total days: %d\n", totalDays)
 }

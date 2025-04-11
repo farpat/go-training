@@ -1,6 +1,6 @@
 The goal of this project is to try to learn Go by writing small programs.
 
-The are programs:
+There are programs:
 * [Display Prime numbers](#display-prime-numbers)
 * [Display square](#display-square)
 

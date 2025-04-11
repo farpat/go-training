@@ -5,8 +5,14 @@ There are programs:
 * [Display square](#display-square)
 
 
-# Display Prime numbers
+# Display prime numbers
 Display prime numbers up to N. 
+```bash
+go run display_prime_numbers.go
+```
 
 # Display square 
 Generate a square of `#` of size NxN.
+```bash
+go run display_square.go
+```

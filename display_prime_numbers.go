@@ -1,12 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+)
 
 func getPrimeNumbers(n int) []int {
 	var primeNumbers []int
 
 	for index := 0; index < n; index++ {
-		if isPrime(index) {
+		isPrimeNum, err := isPrime(index)
+		if err == nil && isPrimeNum {
 			primeNumbers = append(primeNumbers, index)
 		}
 	}
@@ -14,23 +17,24 @@ func getPrimeNumbers(n int) []int {
 	return primeNumbers
 }
 
-func isPrime(n int) bool {
+func isPrime(n int) (bool, error) {
+	if n < 1 {
+		return false, errors.New("n must be greater than 0")
+	}
+
+	if n <= 2 {
+		return true, nil
+	}
+
 	if n%2 == 0 {
-		return false
+		return false, nil
 	}
 
 	for index := 3; index < (n / 2); index++ {
 		if n%index == 0 {
-			return false
+			return false, nil
 		}
 	}
 
-	return true
-}
-
-func main() {
-	max := 50
-
-	fmt.Printf("Prime numbers up to %d:\n", max)
-	fmt.Println(getPrimeNumbers(max))
+	return true, nil
 }

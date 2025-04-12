@@ -4,28 +4,28 @@ import (
 	"errors"
 )
 
-func displaySquare(n int) string {
+func getSquare(n int) string {
 	if n < 1 {
 		return ""
 	}
 
 	if n == 1 {
-		line, _ := displayFilledLine(1)
+		line, _ := getFilledLine(1)
 		return line
 	}
 
 	if n == 2 {
-		line, _ := displayFilledLine(2)
+		line, _ := getFilledLine(2)
 		return line + "\n" + line
 	}
 
 	var square string
 	for i := 0; i < n; i++ {
 		if i == 0 || i == n-1 {
-			line, _ := displayFilledLine(n)
+			line, _ := getFilledLine(n)
 			square += line + "\n"
 		} else {
-			line, _ := displaySemiFilledLine(n)
+			line, _ := getHalfFilledLine(n)
 			square += line + "\n"
 		}
 	}
@@ -33,7 +33,7 @@ func displaySquare(n int) string {
 	return square
 }
 
-func displayFilledLine(n int) (string, error) {
+func getFilledLine(n int) (string, error) {
 	if n < 1 {
 		return "", errors.New("n must be greater than 0")
 	}
@@ -45,7 +45,7 @@ func displayFilledLine(n int) (string, error) {
 	return line, nil
 }
 
-func displaySemiFilledLine(n int) (string, error) {
+func getHalfFilledLine(n int) (string, error) {
 	if n < 1 {
 		return "", errors.New("n must be greater than 0")
 	}

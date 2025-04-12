@@ -1,40 +1,31 @@
 package main
 
-import (
-	"errors"
-)
-
-func getPrimeNumbers(n int) []int {
+func getPrimeNumbers(n uint) []int {
 	var primeNumbers []int
 
-	for index := 0; index < n; index++ {
-		isPrimeNum, err := isPrime(index)
-		if err == nil && isPrimeNum {
-			primeNumbers = append(primeNumbers, index)
+	for index := uint(0); index < n; index++ {
+		if isPrime(index) {
+			primeNumbers = append(primeNumbers, int(index))
 		}
 	}
 
 	return primeNumbers
 }
 
-func isPrime(n int) (bool, error) {
-	if n < 1 {
-		return false, errors.New("n must be greater than 0")
-	}
-
+func isPrime(n uint) bool {
 	if n <= 2 {
-		return true, nil
+		return true
 	}
 
 	if n%2 == 0 {
-		return false, nil
+		return false
 	}
 
-	for index := 3; index < (n / 2); index++ {
+	for index := uint(3); index < (n / 2); index++ {
 		if n%index == 0 {
-			return false, nil
+			return false
 		}
 	}
 
-	return true, nil
+	return true
 }

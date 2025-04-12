@@ -1,31 +1,25 @@
 package main
 
-import (
-	"errors"
-)
-
-func getSquare(n int) string {
-	if n < 1 {
+func getSquare(n uint) string {
+	if n == 0 {
 		return ""
 	}
 
 	if n == 1 {
-		line, _ := getFilledLine(1)
-		return line
+		return getFilledLine(uint(n))
 	}
 
 	if n == 2 {
-		line, _ := getFilledLine(2)
-		return line + "\n" + line
+		return getFilledLine(uint(n)) + "\n" + getFilledLine(uint(n))
 	}
 
 	var square string
-	for i := 0; i < n; i++ {
-		if i == 0 || i == n-1 {
-			line, _ := getFilledLine(n)
+	for i := uint(0); i < n; i++ {
+		if i == 0 || i == (n-1) {
+			line := getFilledLine(uint(n))
 			square += line + "\n"
 		} else {
-			line, _ := getHalfFilledLine(n)
+			line := getHalfFilledLine(uint(n))
 			square += line + "\n"
 		}
 	}
@@ -33,30 +27,30 @@ func getSquare(n int) string {
 	return square
 }
 
-func getFilledLine(n int) (string, error) {
+func getFilledLine(n uint) string {
 	if n < 1 {
-		return "", errors.New("n must be greater than 0")
+		return ""
 	}
 
 	var line string
-	for i := 0; i < n; i++ {
+	for i := uint(0); i < n; i++ {
 		line += "#"
 	}
-	return line, nil
+	return line
 }
 
-func getHalfFilledLine(n int) (string, error) {
+func getHalfFilledLine(n uint) string {
 	if n < 1 {
-		return "", errors.New("n must be greater than 0")
+		return ""
 	}
 
 	var line string
-	for i := 0; i < n; i++ {
+	for i := uint(0); i < n; i++ {
 		if i == 0 || i == (n-1) {
 			line += "#"
 		} else {
 			line += " "
 		}
 	}
-	return line, nil
+	return line
 }

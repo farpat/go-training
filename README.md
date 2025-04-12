@@ -30,3 +30,8 @@ Get divisors count of a number N.
 go run main.go get_divisors.go
 ```
 
+# Get min max
+Get mininimum and maximum of arrays of integers.
+```bash
+go run main.go get_min_max.go
+```

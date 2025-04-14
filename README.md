@@ -1,5 +1,7 @@
 This repository contains a collection of Go programming exercises designed to help you practice and improve your Go programming skills.
 
+[![Test](https://github.com/odavid/go-exercises/workflows/Test/badge.svg)](https://github.com/odavid/go-exercises/actions)
+
 
 # Project Structure
 Each exercise is contained in its own directory under `exercises/` and includes:

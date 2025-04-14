@@ -1,4 +1,3 @@
-// Package {{NAME}} implements the {{NAME}} exercise
 package {{NAME}}
 
 // MainFunction is the main function of the exercise

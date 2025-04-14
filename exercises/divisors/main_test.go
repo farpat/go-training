@@ -3,8 +3,13 @@ package divisors
 import "testing"
 
 func TestGetDivisors(t *testing.T) {
-	// Test with number 12 (divisors: 1, 2, 3, 4, 6, 12)
-	result := GetDivisors(12)
+	// ARRANGE
+	input := 12
+
+	// ACT
+	result := GetDivisors(input)
+
+	// ASSERT
 	expected := []int{1, 2, 3, 4, 6, 12}
 
 	if len(result) != len(expected) {

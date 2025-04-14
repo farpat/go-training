@@ -3,8 +3,13 @@ package {{NAME}}
 import "testing"
 
 func TestMainFunction(t *testing.T) {
-	// TODO: implement your test
-	result := MainFunction(42)
+	// ARRANGE
+	input := 42
+
+	// ACT
+	result := MainFunction(input)
+
+	// ASSERT
 	if result != 42 {
 		t.Errorf("MainFunction(42) = %d; expected 42", result)
 	}

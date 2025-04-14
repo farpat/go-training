@@ -2,6 +2,21 @@ This repository contains a collection of Go programming exercises designed to he
 
 [![Test](https://github.com/farpat/go-training/workflows/Test/badge.svg)](https://github.com/farpat/go-training/actions)
 
+**Table of Contents**
+- [Project Structure](#project-structure)
+- [Creating a New Exercise](#creating-a-new-exercise)
+- [Running Tests](#running-tests)
+
+# Requirements
+- Go +1.21. To install, run on Ubuntu (or similar for another OS): 
+```bash
+sudo apt update && sudo apt install golang-go
+```
+- Make. To install, run on Ubuntu (or similar for another OS): 
+```bash
+sudo apt update &&sudo apt install make
+```
+
 
 # Project Structure
 Each exercise is contained in its own directory under `exercises/` and includes:

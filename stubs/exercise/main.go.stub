@@ -1,0 +1,9 @@
+// Package {{NAME}} implements the {{NAME}} exercise
+package {{NAME}}
+
+// MainFunction is the main function of the exercise
+// TODO: rename this function and update its signature according to the exercise
+func MainFunction(input int) int {
+	// TODO: implement your solution
+	return input
+}

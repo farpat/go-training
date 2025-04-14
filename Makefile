@@ -1,61 +1,32 @@
-.PHONY: test help exercise
+.PHONY: help test exercise
 
-# PATH can be specified to test a specific exercise
-# Example: make test PATH=./exercises/countbits
-PATH ?= ./...
-
-# NAME is required for creating a new exercise
-# Example: make exercise NAME=example
+# Variables
 NAME ?=
 
-## help: Display this help message
-help:
-	@echo "Available commands:"
-	@echo
-	@grep -E '^##' $(MAKEFILE_LIST) | sed -e 's/## //' | sort
+# ANSI color codes
+BOLD := \033[1m
+RESET := \033[0m
+GREEN := \033[32m
+RED := \033[31m
+BLUE := \033[34m
 
-## test: Run unit tests (use PATH=./exercises/name for a specific exercise)
-test:
-	@echo "Running tests..."
-	@if [ "$(PATH)" = "./..." ]; then \
-		for dir in exercises/*/ ; do \
-			if [ -d "$$dir" ]; then \
-				echo "Testing $${dir}..."; \
-				cd "$$dir" && go test && cd ../..; \
-			fi \
-		done \
+help: ## Show this help message	
+	@awk 'BEGIN {FS = ":.*##"; } /^[a-zA-Z_-]+:.*?##/ { printf "$(BOLD)$(BLUE)%-10s$(RESET) %s\n", $$1, $$2 }' $(MAKEFILE_LIST) | sort
+
+test: ## Run unit tests (use NAME=exercisename to target a specific exercise)
+	@echo "$(BLUE)> Running tests...$(RESET)"
+	@if [ -z "$(NAME)" ]; then \
+		go test ./exercises/*; \
 	else \
-		go test $(PATH); \
+		go test ./exercises/$(NAME); \
 	fi
 
-## exercise: Create a new exercise (use NAME=exercisename)
-exercise:
+exercise: ## Create a new exercise (use NAME=exercisename)
 	@if [ -z "$(NAME)" ]; then \
-		echo "Error: NAME parameter is required. Usage: make exercise NAME=exercisename"; \
+		echo "$(BOLD)$(RED)Error:$(RESET) NAME is required. Usage: make exercise NAME=exercisename"; \
 		exit 1; \
 	fi
-	@echo "Creating new exercise: $(NAME)"
 	@mkdir -p exercises/$(NAME)
-	@echo "// Package $(NAME) implements the $(NAME) exercise" > exercises/$(NAME)/main.go
-	@echo "package $(NAME)" >> exercises/$(NAME)/main.go
-	@echo "" >> exercises/$(NAME)/main.go
-	@echo "// MainFunction is the main function of the exercise" >> exercises/$(NAME)/main.go
-	@echo "// TODO: rename this function and update its signature according to the exercise" >> exercises/$(NAME)/main.go
-	@echo "func MainFunction(input int) int {" >> exercises/$(NAME)/main.go
-	@echo "	// TODO: implement your solution" >> exercises/$(NAME)/main.go
-	@echo "	return input" >> exercises/$(NAME)/main.go
-	@echo "}" >> exercises/$(NAME)/main.go
-	@echo "" >> exercises/$(NAME)/main.go
-	@echo "package $(NAME)" > exercises/$(NAME)/main_test.go
-	@echo "" >> exercises/$(NAME)/main_test.go
-	@echo "import \"testing\"" >> exercises/$(NAME)/main_test.go
-	@echo "" >> exercises/$(NAME)/main_test.go
-	@echo "func TestMainFunction(t *testing.T) {" >> exercises/$(NAME)/main_test.go
-	@echo "	// TODO: implement your test" >> exercises/$(NAME)/main_test.go
-	@echo "	result := MainFunction(42)" >> exercises/$(NAME)/main_test.go
-	@echo "	if result != 42 {" >> exercises/$(NAME)/main_test.go
-	@echo "		t.Errorf(\"MainFunction(42) = %d; expected 42\", result)" >> exercises/$(NAME)/main_test.go
-	@echo "	}" >> exercises/$(NAME)/main_test.go
-	@echo "}" >> exercises/$(NAME)/main_test.go
-	@echo "" >> exercises/$(NAME)/main_test.go
-	@echo "Exercise $(NAME) created successfully in exercises/$(NAME)/"
+	@sed "s/{{NAME}}/$(NAME)/g" stubs/exercise/main.go.stub > exercises/$(NAME)/main.go
+	@sed "s/{{NAME}}/$(NAME)/g" stubs/exercise/main_test.go.stub > exercises/$(NAME)/main_test.go
+	@echo "$(GREEN)✔ Exercise '$(NAME)' created successfully in exercises/$(NAME)/$(RESET)"

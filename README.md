@@ -20,8 +20,16 @@ sudo apt update &&sudo apt install make
 
 # Project Structure
 Each exercise is contained in its own directory under `exercises/` and includes:
-- `main.go`: Implementation of the exercise
-- `test.go`: Unit tests for the exercise
+```
+ exercises
+│   ├── exercise_name_1
+│   │   ├── main.go // Implementation of the exercise 1
+│   │   └── main_test.go // Unit tests for the exercise 1
+│   └── exercise_name_2
+│   │   ├── main.go // Implementation of the exercise 2
+│   │   └── main_test.go // Unit tests for the exercise 2
+│   └── etc.
+```
 
 # Creating a New Exercise
 To create a new exercise, use the following make command:

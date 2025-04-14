@@ -14,12 +14,12 @@ sudo apt update && sudo apt install golang-go
 ```
 - Make. To install, run on Ubuntu (or similar for another OS): 
 ```bash
-sudo apt update &&sudo apt install make
+sudo apt update && sudo apt install make
 ```
 
 
 # Project Structure
-Each exercise is contained in its own directory under `exercises/` and includes:
+Each exercise is contained in its own directory under `exercises/` structured as follows:
 ```
  exercises
 │   ├── exercise_name_1

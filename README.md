@@ -1,6 +1,6 @@
 This repository contains a collection of Go programming exercises designed to help you practice and improve your Go programming skills.
 
-[![Test](https://github.com/odavid/go-exercises/workflows/Test/badge.svg)](https://github.com/odavid/go-exercises/actions)
+[![Test](https://github.com/farpat/go-training/workflows/Test/badge.svg)](https://github.com/farpat/go-training/actions)
 
 
 # Project Structure

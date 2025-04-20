@@ -8,7 +8,7 @@ This repository contains a collection of Go programming exercises designed to he
 - [Running Tests](#running-tests)
 
 # Requirements
-- Go +1.21. To install, run on Ubuntu (or similar for another OS): 
+- Go +1.24. To install, run on Ubuntu (or similar for another OS): 
 ```bash
 sudo apt update && sudo apt install golang-go
 ```

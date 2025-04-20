@@ -2,7 +2,7 @@ package contact
 
 import "testing"
 
-func TestItAddContactProperly(t *testing.T) {
+func TestItAddsContactProperly(t *testing.T) {
 	// ARRANGE
 	input := Contact{Name: "John Doe", Email: "john.doe@example.com", Phone: "1234567890"}
 	var contacts Contacts

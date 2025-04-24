@@ -16,9 +16,9 @@ help: ## Show this help message
 test: ## Run unit tests (use NAME=exercisename to target a specific exercise)
 	@echo "$(BLUE)> Running tests...$(RESET)"
 	@if [ -z "$(NAME)" ]; then \
-		go test -v ./exercises/...; \
+		go test ./exercises/...; \
 	else \
-		go test -v ./exercises/$(NAME); \
+		go test ./exercises/$(NAME); \
 	fi
 
 exercise: ## Create a new exercise (use NAME=exercisename)

@@ -16,9 +16,9 @@ help: ## Show this help message
 test: ## Run unit tests (use NAME=exercisename to target a specific exercise)
 	@echo "$(BLUE)> Running tests...$(RESET)"
 	@if [ -z "$(NAME)" ]; then \
-		go test ./exercises/*; \
+		go test -v ./exercises/...; \
 	else \
-		go test ./exercises/$(NAME); \
+		go test -v ./exercises/$(NAME); \
 	fi
 
 exercise: ## Create a new exercise (use NAME=exercisename)
@@ -30,3 +30,7 @@ exercise: ## Create a new exercise (use NAME=exercisename)
 	@sed "s/{{NAME}}/$(NAME)/g" stubs/exercise/main.go.stub > exercises/$(NAME)/main.go
 	@sed "s/{{NAME}}/$(NAME)/g" stubs/exercise/main_test.go.stub > exercises/$(NAME)/main_test.go
 	@echo "$(GREEN)✔ Exercise '$(NAME)' created successfully in exercises/$(NAME)/$(RESET)"
+
+list: ## List all exercises
+	@echo "$(BLUE)> Exercises:$(RESET)"
+	@ls exercises | sort

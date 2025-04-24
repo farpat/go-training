@@ -16,20 +16,18 @@ func ExtractUniqueLines(filePath string) ([]string, error) {
 }
 
 func extractUniqueLinesOfFile(file *os.File) []string {
-	uniqueRows := make(map[string]bool)
+	uniqueSeen := make(map[string]bool)
+	var uniqueLines []string
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if line == "" {
+		_, isExisting := uniqueSeen[line]
+		if line == "" || isExisting {
 			continue
 		}
 
-		uniqueRows[line] = true
-	}
-
-	var uniqueLines []string
-	for line := range uniqueRows {
+		uniqueSeen[line] = true
 		uniqueLines = append(uniqueLines, line)
 	}
 

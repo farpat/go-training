@@ -12,6 +12,7 @@ This repository contains a collection of Go programming exercises designed to he
 ```bash
 sudo apt update && sudo apt install golang-go
 ```
+or follow these instructions: https://go.dev/doc/install
 - Make. To install, run on Ubuntu (or similar for another OS): 
 ```bash
 sudo apt update && sudo apt install make

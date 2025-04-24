@@ -1,10 +1,15 @@
 package unique_lines_extractor
 
-import "testing"
+import (
+	"path"
+	"runtime"
+	"testing"
+)
 
 func TestExtractUniqueLines(t *testing.T) {
 	// ARRANGE
-	filePath := "sample.txt"
+	_, filename, _, _ := runtime.Caller(0)
+	filePath := path.Join(path.Dir(filename), "sample.txt")
 
 	// ACT
 	result, err := ExtractUniqueLines(filePath)

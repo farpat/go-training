@@ -1,12 +1,15 @@
 package words_counter
 
 import (
+	"path"
+	"runtime"
 	"testing"
 )
 
 func TestCountTopWords(t *testing.T) {
 	// ARRANGE
-	filePath := "sample.txt"
+	_, filename, _, _ := runtime.Caller(0)
+	filePath := path.Join(path.Dir(filename), "sample.txt")
 	maxWords := 2
 
 	// ACT

@@ -1,0 +1,6 @@
+hello world
+go is great
+hello world
+learning go
+go is great
+go is great

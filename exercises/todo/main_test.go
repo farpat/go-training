@@ -2,8 +2,9 @@ package todo
 
 import (
 	"fmt"
-	"reflect"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 func TestItAddsTodo(t *testing.T) {
@@ -106,8 +107,8 @@ func TestItSortsTodosByTitle(t *testing.T) {
 		t.Errorf("Expected 2 todos, got %d", len(sortedTitles))
 	}
 	var expectedTitles []string = []string{"Test Todo 1", "Test Todo 2"}
-	if !reflect.DeepEqual(sortedTitles, expectedTitles) {
-		t.Errorf("Expected titles %v, got %v", expectedTitles, sortedTitles)
+	if diff := cmp.Diff(sortedTitles, expectedTitles); diff != "" {
+		t.Errorf("getSortedTitles() = %v diff %v", sortedTitles, diff)
 	}
 }
 
